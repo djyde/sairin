@@ -2,7 +2,8 @@
   "name": "@sairin/example",
   "version": "0.1.0",
   "scripts": {
-    "start": "next dev"
+    "start": "next dev",
+    "build": "next build"
   },
   "dependencies": {
     "@sairin/core": "workspace:*",

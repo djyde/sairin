@@ -6,9 +6,9 @@ export class Sairin {
   private REVALIDATE = 10
 
   constructor(public config?: {
-    theme: any
+    theme: any,
+    themeConfig?: Record<string, any>
   }) {
-
   }
 
   getHomePageStaticProps = async () => {
@@ -16,7 +16,9 @@ export class Sairin {
 
     return {
       props: {
-        posts
+        // TODO: reduce post body size
+        posts,
+        themeConfig: this.config?.themeConfig || {}
       },
       revalidate: this.REVALIDATE
     }
@@ -38,9 +40,10 @@ export class Sairin {
     const post = posts.find(p => p.attributes.path === ctx.params[this.PAGE_PATH_PLACEHOLDER].join('/')) || null
     return {
       props: {
-        post
+        post,
+        themeConfig: this.config?.themeConfig || {},
       },
-      revalidate: this.REVALIDATE
-    }
+      revalidate: this.REVALIDATE,
+    };
   }
 }

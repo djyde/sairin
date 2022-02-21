@@ -33,6 +33,7 @@ export async function getPostList() {
       // ...post,
       id: post.id,
       title: post.title,
+      createdAt: post.created_at,
       html,
       attributes
     }

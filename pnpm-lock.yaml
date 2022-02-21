@@ -42,12 +42,17 @@ importers:
     specifiers:
       autoprefixer: ^10.4.2
       concurrently: ^7.0.0
+      dayjs: ^1.10.7
+      next: ^12.1.0
       postcss: ^8.4.6
       tailwindcss: ^3.0.23
       typescript: ^4.5.5
+    dependencies:
+      dayjs: 1.10.7
     devDependencies:
       autoprefixer: 10.4.2_postcss@8.4.6
       concurrently: 7.0.0
+      next: 12.1.0
       postcss: 8.4.6
       tailwindcss: 3.0.23_autoprefixer@10.4.2
       typescript: 4.5.5
@@ -77,7 +82,6 @@ packages:
 
   /@next/env/12.1.0:
     resolution: {integrity: sha512-nrIgY6t17FQ9xxwH3jj0a6EOiQ/WDHUos35Hghtr+SWN/ntHIQ7UpuvSi0vaLzZVHQWaDupKI+liO5vANcDeTQ==}
-    dev: false
 
   /@next/swc-android-arm64/12.1.0:
     resolution: {integrity: sha512-/280MLdZe0W03stA69iL+v6I+J1ascrQ6FrXBlXGCsGzrfMaGr7fskMa0T5AhQIVQD4nA/46QQWxG//DYuFBcA==}
@@ -85,7 +89,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-darwin-arm64/12.1.0:
@@ -94,7 +97,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-darwin-x64/12.1.0:
@@ -103,7 +105,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm-gnueabihf/12.1.0:
@@ -112,7 +113,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm64-gnu/12.1.0:
@@ -121,7 +121,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm64-musl/12.1.0:
@@ -130,7 +129,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-x64-gnu/12.1.0:
@@ -139,7 +137,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-x64-musl/12.1.0:
@@ -148,7 +145,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-arm64-msvc/12.1.0:
@@ -157,7 +153,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-ia32-msvc/12.1.0:
@@ -166,7 +161,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-x64-msvc/12.1.0:
@@ -175,7 +169,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -438,6 +431,10 @@ packages:
     engines: {node: '>=0.11'}
     dev: true
 
+  /dayjs/1.10.7:
+    resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
+    dev: false
+
   /defined/1.0.0:
     resolution: {integrity: sha1-yY2bzvdWdBiOEQlpFRGZ45sfppM=}
     dev: true
@@ -692,6 +689,46 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /next/12.1.0:
+    resolution: {integrity: sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q==}
+    engines: {node: '>=12.22.0'}
+    hasBin: true
+    peerDependencies:
+      fibers: '>= 3.1.0'
+      node-sass: ^6.0.0 || ^7.0.0
+      react: ^17.0.2 || ^18.0.0-0
+      react-dom: ^17.0.2 || ^18.0.0-0
+      sass: ^1.3.0
+    peerDependenciesMeta:
+      fibers:
+        optional: true
+      node-sass:
+        optional: true
+      sass:
+        optional: true
+    dependencies:
+      '@next/env': 12.1.0
+      caniuse-lite: 1.0.30001312
+      postcss: 8.4.5
+      styled-jsx: 5.0.0
+      use-subscription: 1.5.1
+    optionalDependencies:
+      '@next/swc-android-arm64': 12.1.0
+      '@next/swc-darwin-arm64': 12.1.0
+      '@next/swc-darwin-x64': 12.1.0
+      '@next/swc-linux-arm-gnueabihf': 12.1.0
+      '@next/swc-linux-arm64-gnu': 12.1.0
+      '@next/swc-linux-arm64-musl': 12.1.0
+      '@next/swc-linux-x64-gnu': 12.1.0
+      '@next/swc-linux-x64-musl': 12.1.0
+      '@next/swc-win32-arm64-msvc': 12.1.0
+      '@next/swc-win32-ia32-msvc': 12.1.0
+      '@next/swc-win32-x64-msvc': 12.1.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+    dev: true
+
   /next/12.1.0_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q==}
     engines: {node: '>=12.22.0'}
@@ -751,7 +788,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
     engines: {node: '>=0.10.0'}
-    dev: false
 
   /object-hash/2.2.0:
     resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
@@ -844,7 +880,6 @@ packages:
       nanoid: 3.3.1
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: false
 
   /postcss/8.4.6:
     resolution: {integrity: sha512-OovjwIzs9Te46vlEx7+uXB0PLijpwjXGKXjVGGPIGubGpq7uh5Xgf6D6FiJ/SzJMBosHDp6a2hiXOS97iBXcaA==}
@@ -962,6 +997,20 @@ packages:
       ansi-regex: 5.0.1
     dev: true
 
+  /styled-jsx/5.0.0:
+    resolution: {integrity: sha512-qUqsWoBquEdERe10EW8vLp3jT25s/ssG1/qX5gZ4wu15OZpmSMFI2v+fWlRhLfykA5rFtlJ1ME8A8pm/peV4WA==}
+    engines: {node: '>= 12.0.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      babel-plugin-macros: '*'
+      react: '>= 16.8.0 || 17.x.x || 18.x.x'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      babel-plugin-macros:
+        optional: true
+    dev: true
+
   /styled-jsx/5.0.0_react@17.0.2:
     resolution: {integrity: sha512-qUqsWoBquEdERe10EW8vLp3jT25s/ssG1/qX5gZ4wu15OZpmSMFI2v+fWlRhLfykA5rFtlJ1ME8A8pm/peV4WA==}
     engines: {node: '>= 12.0.0'}
@@ -1057,6 +1106,14 @@ packages:
     resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
+
+  /use-subscription/1.5.1:
+    resolution: {integrity: sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0
+    dependencies:
+      object-assign: 4.1.1
     dev: true
 
   /use-subscription/1.5.1_react@17.0.2:

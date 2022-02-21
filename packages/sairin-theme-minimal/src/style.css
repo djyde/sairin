@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'IBM Plex Serif', serif;
+}
+
+.post-body p {
+  @apply mb-4;
+}
