@@ -11,7 +11,7 @@ body {
 }
 
 .post-body h1, h2, h3, h4, h5, h6 {
-  @apply mt-12 mb-4 font-medium;
+  @apply mt-12 mb-6 font-medium;
 }
 
 .post-body h2 {
@@ -24,4 +24,16 @@ body {
 
 .post-body h4 {
   @apply text-xl;
+}
+
+.post-body a img {
+  display: inline-block;
+}
+
+.post-body img {
+  @apply max-w-full inline-block my-8 ;
+}
+
+.post-body blockquote {
+  @apply border-l-8 border-gray-300 pl-4 my-12;
 }
