@@ -1,0 +1,17 @@
+{
+  "name": "@sairin/core",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.39",
+    "axios": "^0.26.0",
+    "front-matter": "^4.0.2",
+    "marked": "^4.0.12"
+  }
+}
