@@ -11,7 +11,7 @@ const authHeaders = TOKEN ? {
   Authorization: `bearer ${TOKEN}`,
 } : {
   
-}
+} as any
 
 export async function getPostList() {
 
