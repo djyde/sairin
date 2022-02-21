@@ -9,7 +9,7 @@ Props
   - html
   - attributes
   - createdAt
-
+  - issueUrl
 
 ### Home
 

@@ -27,8 +27,14 @@ export default function Post(props) {
           </div>
         </div>
 
-        <div className="text-3xl font-medium mb-8">
-          {props.post.title}
+        <div className="mb-8">
+          <div className='text-3xl font-medium'>
+            {props.post.title}
+          </div>
+
+          <div className='mt-2'>
+            <a className='underline text-sm' target='_blank' href={props.post.issueUrl}>View on GitHub</a>
+          </div>
         </div>
 
         <div className="post-body" dangerouslySetInnerHTML={{ __html: props.post.html }}>

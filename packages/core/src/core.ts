@@ -15,35 +15,35 @@ const authHeaders = TOKEN ? {
 
 export async function getPostList() {
 
+  // https://docs.github.com/en/rest/reference/issues#list-repository-issues
   const res = await axios.get(
     `https://api.github.com/repos/${REPO}/issues?state=all&per_page=100`,
     {
       params: {
-        state: 'all',
+        state: "all",
         per_page: 100,
-        labels: [
-          'published'
-        ].join(',')
+        labels: ["published"].join(","),
       },
       headers: {
-        ...authHeaders
+        ...authHeaders,
       },
     }
   );
 
-  const posts = res.data.map(post => {
-    const { html, attributes } = processBody(post.body)
+  const posts = res.data.map((post) => {
+    const { html, attributes } = processBody(post.body);
     return {
       // ...post,
       id: post.id,
       title: post.title,
       createdAt: post.created_at,
+      issueUrl: post.html_url,
       html,
-      attributes
-    }
-  })
+      attributes,
+    };
+  });
 
-  return posts
+  return posts;
 }
 
 function processBody(body: string) {
