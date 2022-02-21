@@ -3,7 +3,9 @@ import { marked } from 'marked'
 import fm from 'front-matter'
 
 const TOKEN = process.env.GITHUB_TOKEN;
-const REPO = process.env.REPO
+const REPO =
+  process.env.REPO ||
+  `${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`;
 
 const authHeaders = {
   Authorization: `bearer ${TOKEN}`,

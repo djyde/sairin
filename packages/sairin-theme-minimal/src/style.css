@@ -9,3 +9,19 @@ body {
 .post-body p {
   @apply mb-4;
 }
+
+.post-body h1, h2, h3, h4, h5, h6 {
+  @apply mt-12 mb-4 font-medium;
+}
+
+.post-body h2 {
+  @apply text-3xl;
+}
+
+.post-body h3 {
+  @apply text-2xl;
+}
+
+.post-body h4 {
+  @apply text-xl;
+}

@@ -1,8 +1,8 @@
-import { Sairin } from '@sairin/core'
+import { Sairin } from '@sairinjs/core'
 
 // theme
-import BlogTheme from '@sairin/sairin-theme-minimal'
-import '@sairin/sairin-theme-minimal/style.css'
+import BlogTheme from '@sairinjs/sairin-theme-minimal'
+import '@sairinjs/sairin-theme-minimal/style.css'
 import themeConfig from '../theme.config'
 
 export const sairin = new Sairin({
