@@ -1,6 +1,6 @@
 {
   "name": "@sairinjs/sairin-theme-minimal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "scripts": {
     "dev": "concurrently npm:dev-theme npm:dev-style",
@@ -8,7 +8,8 @@
     "dev-style": "tailwind -i ./src/style.css -o ./style.css --watch",
     "build-theme": "tsc",
     "build-style": "tailwind -i ./src/style.css -o ./style.css",
-    "build": "concurrently npm:build-theme npm:build-style"
+    "build": "concurrently npm:build-theme npm:build-style",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
