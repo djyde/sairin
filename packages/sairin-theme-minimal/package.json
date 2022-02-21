@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "concurrently npm:dev-theme npm:dev-style",
     "dev-theme": "tsc --watch",
-    "dev-style": "tailwind -i ./src/style.css -o ./style.css --watch"
+    "dev-style": "tailwind -i ./src/style.css -o ./style.css --watch",
+    "build-theme": "tsc",
+    "build-style": "tailwind -i ./src/style.css -o ./style.css",
+    "build": "concurrently npm:build-theme npm:build-style"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
