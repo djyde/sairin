@@ -7,9 +7,11 @@ const REPO =
   process.env.REPO ||
   `${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`;
 
-const authHeaders = {
+const authHeaders = TOKEN ? {
   Authorization: `bearer ${TOKEN}`,
-};
+} : {
+  
+}
 
 export async function getPostList() {
 
