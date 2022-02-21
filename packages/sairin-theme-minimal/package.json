@@ -1,5 +1,5 @@
 {
-  "name": "@sairin/sairin-theme-minimal",
+  "name": "@sairinjs/sairin-theme-minimal",
   "version": "0.1.0",
   "main": "lib/index.js",
   "scripts": {

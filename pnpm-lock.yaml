@@ -19,8 +19,8 @@ importers:
 
   packages/example:
     specifiers:
-      '@sairin/core': workspace:*
-      '@sairin/sairin-theme-minimal': workspace:*
+      '@sairinjs/core': workspace:*
+      '@sairinjs/sairin-theme-minimal': workspace:*
       '@types/node': ^17.0.19
       '@types/react': ^17.0.39
       next: ^12.1.0
@@ -28,8 +28,8 @@ importers:
       react-dom: ^17.0.2
       typescript: ^4.5.5
     dependencies:
-      '@sairin/core': link:../core
-      '@sairin/sairin-theme-minimal': link:../sairin-theme-minimal
+      '@sairinjs/core': link:../core
+      '@sairinjs/sairin-theme-minimal': link:../sairin-theme-minimal
       next: 12.1.0_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2

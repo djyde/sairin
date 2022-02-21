@@ -1,5 +1,5 @@
 {
-  "name": "@sairin/core",
+  "name": "@sairinjs/core",
   "version": "0.1.0",
   "main": "lib/index.js",
   "scripts": {
