@@ -1,3 +1,13 @@
+## Deploy
+
+### Basic
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdjyde%2Fsairin-starter&env=GITHUB_TOKEN&envDescription=Provide%20an%20access%20token%20to%20increase%20revalidate%20frequency&envLink=https%3A%2F%2Fgithub.com%2Fsettings%2Ftokens)
+
+### Personal access token
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdjyde%2Fsairin-starter&env=GITHUB_TOKEN&envDescription=Provide%20an%20access%20token%20to%20increase%20revalidate%20frequency&envLink=https%3A%2F%2Fgithub.com%2Fsettings%2Ftokens)
+
 ## Theme Layout
 
 ### Post
