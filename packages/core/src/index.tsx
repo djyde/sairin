@@ -1,14 +1,16 @@
 import { getPostList, resolvedConfig } from './core';
 
+export type SairinConfig = {
+  theme: any;
+  themeConfig?: Record<string, any>;
+};
+
 export class Sairin {
 
   private PAGE_PATH_PLACEHOLDER = 'path'
   private REVALIDATE = resolvedConfig.ghToken ? 10 : 60
 
-  constructor(public config?: {
-    theme: any,
-    themeConfig?: Record<string, any>
-  }) {
+  constructor(public config?: SairinConfig) {
   }
 
   getHomePageStaticProps = async () => {
@@ -46,4 +48,8 @@ export class Sairin {
       revalidate: this.REVALIDATE,
     };
   }
+
+  DocumentHead = () => <>
+    {this.config?.theme.Head && <this.config.theme.Head></this.config.theme.Head>}
+  </>
 }
