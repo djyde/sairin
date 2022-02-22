@@ -57,9 +57,25 @@ Sairin supports custom theme. But the API is not stable now. If you still want t
 
 ## Development
 
+> Sairin use [pnpm](https://pnpm.io) to organize the packages, you need to install pnpm first.
+
+Install the dependencies:
+
 ```bash
 $ pnpm i
+```
 
-# run all the dev command
+Create a `.env` file on `example/`:
+
+```bash
+GITHUB_TOKEN= # need to provide a GitHub access token when developing, or it will reach the API request rate limit.
+REPO=djyde/sairin # you can change to any repo for debugging
+```
+
+Run dev command:
+
+```bash
 $ pnpm run dev --filter "*" --parallel
 ```
+
+This command will run a blog on localhost.
