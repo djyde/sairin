@@ -2,8 +2,14 @@ import axios from "axios";
 import { marked } from "marked";
 import fm from "front-matter";
 import { pick } from 'lodash'
+import { Feed } from 'feed'
 
 export type SairinConfig = {
+  siteConfig: {
+    title: string,
+    author?: string,
+    url?: string,
+  },
   theme: any;
   themeConfig?: Record<string, any>;
   allowUsers?: string[]
@@ -28,35 +34,21 @@ export class Sairin {
   })();
 
   private PAGE_PATH_PLACEHOLDER = 'path'
-  private REVALIDATE = this.resolvedConfig.ghToken ? 10 : 60
 
-  constructor(public config?: SairinConfig) {
-  }
+  // for the unauthencated api request, GitHub rate limit is 60 per hour, so we set 2 miniutes revalidate cycle
+  private REVALIDATE = this.resolvedConfig.ghToken ? 10 : 3 * 60
 
   private allowUsers: string[] = [this.resolvedConfig.ghUserName].concat(this.config?.allowUsers || [])
 
-  getHomePageStaticProps = async () => {
-    const posts = await this.getPostList()
-    const user = await this.getUser(this.resolvedConfig.ghUserName)
-    return {
-      props: {
-        // TODO: reduce post body size
-        posts,
-        user: {
-          avatarUrl: user.avatar_url,
-          name: user.name
-        },
-        themeConfig: this.config?.themeConfig || {}
-      },
-      revalidate: this.REVALIDATE
-    }
-  }
-
-  authHeaders = this.resolvedConfig.ghToken
+  private authHeaders = this.resolvedConfig.ghToken
     ? {
       Authorization: `bearer ${this.resolvedConfig.ghToken}`,
     }
     : ({} as any);
+
+
+  constructor(public config: SairinConfig) {
+  }
 
   async getPostList() {
     // https://docs.github.com/en/rest/reference/issues#list-repository-issues
@@ -80,11 +72,7 @@ export class Sairin {
       const { html, attributes } = this.processBody(post.body);
       return {
         // ...post,
-        id: post.id,
-        title: post.title,
-        created_at: post.created_at,
-        html_url: post.html_url,
-        body: post.body,
+        ...pick(post, ['id', 'title', 'created_at', 'updated_at', 'html_url', 'body']),
         user: pick(post.user, ["avatar_url", "name", "html_url", "login"]),
         html,
         attributes,
@@ -94,7 +82,7 @@ export class Sairin {
     return posts;
   }
 
-  processBody(body: string) {
+  private processBody(body: string) {
     const { body: rawBody, attributes } = fm(body);
     return {
       html: marked.parse(rawBody),
@@ -102,7 +90,7 @@ export class Sairin {
     };
   }
 
-  async getUser(username: string) {
+  private async getUser(username: string) {
     const res = await axios.get(`https://api.github.com/users/${username}`);
     return res.data;
   }
@@ -118,6 +106,23 @@ export class Sairin {
     }
   }
 
+  getHomePageStaticProps = async () => {
+    const posts = await this.getPostList()
+    const user = await this.getUser(this.resolvedConfig.ghUserName)
+    return {
+      props: {
+        // TODO: reduce post body size
+        posts,
+        user: {
+          avatarUrl: user.avatar_url,
+          name: user.name
+        },
+        themeConfig: this.config?.themeConfig || {}
+      },
+      revalidate: this.REVALIDATE
+    }
+  }
+
   getPostPageStaticProps = async (ctx) => {
     const posts = await this.getPostList() as any[]
     const post = posts.find(p => p.attributes.path === ctx.params[this.PAGE_PATH_PLACEHOLDER].join('/')) || null
@@ -128,6 +133,42 @@ export class Sairin {
       },
       revalidate: this.REVALIDATE,
     };
+  }
+
+  private generateFeed = async () => {
+
+    const feed = new Feed({
+      title: this.config.siteConfig.title,
+      copyright: this.config.siteConfig.title,
+      id: this.config.siteConfig.title,
+      author: {
+        name: this.config.siteConfig.author || this.resolvedConfig.ghUserName,
+      }
+    })
+
+    if (!this.config.siteConfig.url) {
+      return feed.atom1()
+    }
+
+    const posts = await this.getPostList()
+
+    posts.forEach(post => {
+      feed.addItem({
+        date: new Date(post.updated_at),
+        link: `${this.config.siteConfig.url}/${post.attributes.path}`,
+        title: post.title,
+        content: post.html,
+      })
+    })
+
+    return feed.atom1()
+  }
+
+  rssHandler = async (req, res) => {
+    res.setHeader("Content-Type", "application/xml");
+    // https://vercel.com/docs/concepts/edge-network/caching#stale-while-revalidate
+    res.setHeader('Cache-Control', `s-maxage=1 stale-while-revalidate=${10 * 60}`)
+    res.send(await this.generateFeed())
   }
 
   DocumentHead = () => <>

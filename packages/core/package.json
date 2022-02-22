@@ -14,6 +14,7 @@
     "@types/react": "^17.0.39",
     "axios": "^0.26.0",
     "debug": "^4.3.3",
+    "feed": "^4.2.2",
     "front-matter": "^4.0.2",
     "lodash": "^4.17.21",
     "marked": "^4.0.12"
