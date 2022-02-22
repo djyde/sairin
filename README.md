@@ -4,7 +4,7 @@ A blog engine based on GitHub issue with the power of Next.js [ISR](https://next
 
 ## On Clieck Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdjyde%2Fsairin-starter&env=GITHUB_TOKEN&envDescription=Provide%20an%20access%20token%20to%20increase%20revalidate%20frequency&envLink=https%3A%2F%2Fgithub.com%2Fsettings%2Ftokens)
+<a target="_blank" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdjyde%2Fsairin-starter&env=GITHUB_TOKEN&envDescription=GitHub%20personal%20access%20token&envLink=https%3A%2F%2Fgithub.com%2Fsettings%2Ftokens"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
 ## Documentation
 
@@ -19,6 +19,11 @@ A blog engine based on GitHub issue with the power of Next.js [ISR](https://next
 - `theme` (required)
 - `themeConfig` A config object passed to the theme
 - `allowUsers` string[] An array of GitHub user login id that allowed to publish blog post. By default, only issues created by the repo owner will be published on the blog.
+
+### Environment Variables
+
+- `GITHUB_TOKEN` (required) [Personal Access Token](https://github.com/settings/tokens) to call GitHub API
+- `REPO` The repository which will be fetch blog posts from (e.g `owner/repo`). By default it will use the repo that created by Vercel.
 
 ## RSS Support
 
@@ -45,9 +50,7 @@ No.
 
 ### How long will take to update the latest content after the issue content update?
 
-If you didn't provide a `GITHUB_TOKEN` environment variable, the update frequency is every 3 miniutes. Since the GitHub API rate limit for unauthencated request is 60 per hour.
-
-Set an `GITHUB_TOKEN` environment variable to increase the update frequency to every 10 seconds.
+Blog will be updated every 1 minute.
 
 ## Theme Development
 
