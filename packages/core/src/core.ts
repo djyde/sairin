@@ -47,9 +47,10 @@ export async function getPostList() {
       // ...post,
       id: post.id,
       title: post.title,
-      createdAt: post.created_at,
-      issueUrl: post.html_url,
-      user: pick(post.user, ["avatar_url", "name", "html_url", 'login']),
+      created_at: post.created_at,
+      html_url: post.html_url,
+      body: post.body,
+      user: pick(post.user, ["avatar_url", "name", "html_url", "login"]),
       html,
       attributes,
     };

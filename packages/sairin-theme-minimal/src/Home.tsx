@@ -24,7 +24,7 @@ export default function Home(props) {
                 </Link>
 
                 <div className="text-sm">
-                  {dayjs(post.createdAt).format('DD/MM/YYYY')}
+                  {dayjs(post.created_at).format('DD/MM/YYYY')}
                 </div>
               </div>
             )

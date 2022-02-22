@@ -34,7 +34,7 @@ export default function Post(props) {
 
             <a target='_blank' href={props.post.user.html_url}>{props.post.user.login}</a>
 
-            <a className='underline text-sm' target='_blank' href={props.post.issueUrl}>View on GitHub</a>
+            <a className='underline text-sm' target='_blank' href={props.post.html_url}>View on GitHub</a>
 
           </div>
 

@@ -9,7 +9,7 @@ Props
   - html
   - attributes
   - createdAt
-  - issueUrl
+  - html_url
   - user
     - avatar_url
     - name
