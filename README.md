@@ -1,6 +1,6 @@
 # Sairin
 
-A blog engine based on GitHub issue and Vercel.
+A blog engine based on GitHub issue with the power of Next.js [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
 
 ## On Clieck Deploy
 
