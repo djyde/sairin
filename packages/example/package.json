@@ -2,7 +2,7 @@
   "name": "@sairinjs/example",
   "version": "0.1.0",
   "scripts": {
-    "start": "next dev",
+    "dev": "next dev",
     "build": "next build"
   },
   "dependencies": {
