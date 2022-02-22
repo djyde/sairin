@@ -14,12 +14,17 @@ Props
 ### Home
 
 - posts
+- user
+  - avatarUrl
+  - name
 
 # Build
 
 ## Development
 
 ```bash
+$ pnpm i
+
 # run all the dev command
 $ pnpm run dev --filter "*" --parallel
 ```

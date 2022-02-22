@@ -28,8 +28,16 @@ export default function Post(props) {
             {props.post.title}
           </div>
 
-          <div className='mt-2'>
+          <div className='flex mt-4 items-center gap-2'>
+            <img className='w-8 h-8 rounded-full' src={ props.post.user.avatar_url }></img>
+
+            <a target='_blank' href={props.post.user.html_url}>{props.post.user.login}</a>
+
             <a className='underline text-sm' target='_blank' href={props.post.issueUrl}>View on GitHub</a>
+
+          </div>
+
+          <div className='mt-2'>
           </div>
         </div>
 

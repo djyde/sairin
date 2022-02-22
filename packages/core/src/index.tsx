@@ -1,4 +1,4 @@
-import { getPostList, resolvedConfig } from './core';
+import { getPostList, getUser, resolvedConfig } from './core';
 
 export type SairinConfig = {
   theme: any;
@@ -15,11 +15,15 @@ export class Sairin {
 
   getHomePageStaticProps = async () => {
     const posts = await getPostList()
-
+    const user = await getUser(resolvedConfig.ghUserName)
     return {
       props: {
         // TODO: reduce post body size
         posts,
+        user: {
+          avatarUrl: user.avatar_url,
+          name: user.name
+        },
         themeConfig: this.config?.themeConfig || {}
       },
       revalidate: this.REVALIDATE
