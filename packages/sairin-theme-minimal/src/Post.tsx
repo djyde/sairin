@@ -19,7 +19,7 @@ export default function Post(props) {
 
       </Head>
 
-      <div className="container mx-auto mt-24 max-w-2xl">
+      <div className="container mx-auto mt-24 max-w-2xl px-4 sm:px-0">
 
         <div>
           <div className="flex my-8 font-bold">

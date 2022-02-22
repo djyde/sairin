@@ -11,7 +11,7 @@ export default function Home(props) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='' />
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
       </Head>
-      <div className="container mx-auto max-w-2xl mt-24">
+      <div className="container mx-auto max-w-2xl mt-24 px-4 sm:px-0">
         <div className="text-3xl font-bold mb-12">
           {props.themeConfig.title}
         </div>
