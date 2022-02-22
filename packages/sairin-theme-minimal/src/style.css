@@ -10,7 +10,15 @@ body {
 }
 
 .post-body p, pre, pre[class*="language-"] {
-  @apply mb-4;
+  @apply mb-4 leading-loose;
+}
+
+.post-body p > code {
+  @apply bg-gray-100 text-gray-900 text-sm p-1 rounded;
+}
+
+.post-body a {
+  @apply underline;
 }
 
 .post-body h1, h2, h3, h4, h5, h6 {
