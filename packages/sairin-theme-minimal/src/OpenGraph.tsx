@@ -8,7 +8,7 @@ export function OpenGraph(props: {
   return (
     <>
       <meta property="og:type" content="artical" />
-      <meta property="og:description" content={props.post.body.substring(0, 140)} />
+      {/* <meta property="og:description" content={props.post.body.substring(0, 140)} /> */}
       <meta property="og:title" content={props.post.title} />
       <meta property="og:image" content={ogImage} />
 
