@@ -50,9 +50,7 @@ No.
 
 ### How long will take to update the latest content after the issue content update?
 
-If you didn't provide a `GITHUB_TOKEN` environment variable, the update frequency is every 3 miniutes. Since the GitHub API rate limit for unauthencated request is 60 per hour.
-
-Set an `GITHUB_TOKEN` environment variable to increase the update frequency to every 10 seconds.
+Blog will be updated every 1 minute.
 
 ## Theme Development
 
