@@ -10,6 +10,11 @@ Props
   - attributes
   - createdAt
   - issueUrl
+  - user
+    - avatar_url
+    - name
+    - login
+    - html_url
 
 ### Home
 
