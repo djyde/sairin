@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { Footer } from './Footer'
 import { OpenGraph } from './OpenGraph'
 
 export default function Post(props) {
@@ -45,6 +46,11 @@ export default function Post(props) {
         <div className="post-body" dangerouslySetInnerHTML={{ __html: props.post.html }}>
 
         </div>
+
+        <div className="my-12">
+          <Footer />
+        </div>
+
 
       </div>
 

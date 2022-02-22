@@ -17,7 +17,7 @@ export function OpenGraph(props: {
 
 
       <meta name="twitter:card" content={props.post.title} />
-      <meta name="twitter:title" content="Parade of Fans for Houston’s Funeral" />
+      <meta name="twitter:title" content={props.post.title} />
       <meta name="twitter:image" content={ogImage} />
 
     </>
