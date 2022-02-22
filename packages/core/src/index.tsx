@@ -196,6 +196,6 @@ export class Sairin {
   }
 
   DocumentHead = () => <>
-    {this.config?.theme.Head && <this.config.theme.Head></this.config.theme.Head>}
+    {this.config?.theme.Head && <this.config.theme.Head sairinConfig={this.config}></this.config.theme.Head>}
   </>
 }
