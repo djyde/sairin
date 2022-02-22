@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* seems Tailwind CLI use project root path to relative import */
+@import "./src/prism.css";
+
 body {
   font-family: 'IBM Plex Serif', serif;
 }
 
-.post-body p {
+.post-body p, pre, pre[class*="language-"] {
   @apply mb-4;
 }
 

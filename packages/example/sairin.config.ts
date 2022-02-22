@@ -4,7 +4,8 @@ import BlogTheme from "@sairinjs/sairin-theme-minimal";
 
 export default {
   siteConfig: {
-    title: 'Sairin'
+    title: 'Sairin',
+    url: 'https://blog.sairinjs.com'
   },
   theme: BlogTheme,
   themeConfig: {

@@ -11,6 +11,7 @@ importers:
       front-matter: ^4.0.2
       lodash: ^4.17.21
       marked: ^4.0.12
+      prismjs: ^1.27.0
       typescript: ^4.5.5
     dependencies:
       '@types/react': 17.0.39
@@ -20,6 +21,7 @@ importers:
       front-matter: 4.0.2
       lodash: 4.17.21
       marked: 4.0.12
+      prismjs: 1.27.0
     devDependencies:
       typescript: 4.5.5
 
@@ -919,6 +921,11 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
     dev: true
+
+  /prismjs/1.27.0:
+    resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}

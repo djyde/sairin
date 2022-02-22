@@ -4,6 +4,18 @@ import fm from "front-matter";
 import { pick } from 'lodash'
 import { Feed } from 'feed'
 
+import * as prism from 'prismjs'
+
+marked.setOptions({
+  highlight: (code, lang) => {
+    if (prism.languages[lang]) {
+      return prism.highlight(code, prism.languages[lang], lang);
+    } else {
+      return code;
+    }
+  },
+})
+
 export type SairinConfig = {
   siteConfig: {
     title: string,
