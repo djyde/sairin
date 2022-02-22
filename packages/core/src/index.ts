@@ -1,9 +1,9 @@
-import { getPostList } from './core';
+import { getPostList, resolvedConfig } from './core';
 
 export class Sairin {
 
   private PAGE_PATH_PLACEHOLDER = 'path'
-  private REVALIDATE = 10
+  private REVALIDATE = resolvedConfig.ghToken ? 10 : 60
 
   constructor(public config?: {
     theme: any,
