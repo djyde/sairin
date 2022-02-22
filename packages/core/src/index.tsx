@@ -47,8 +47,7 @@ export class Sairin {
 
   private PAGE_PATH_PLACEHOLDER = 'path'
 
-  // for the unauthencated api request, GitHub rate limit is 60 per hour, so we set 2 miniutes revalidate cycle
-  private REVALIDATE = this.resolvedConfig.ghToken ? 10 : 3 * 60
+  private REVALIDATE = 60
 
   private allowUsers: string[] = [this.resolvedConfig.ghUserName].concat(this.config?.allowUsers || [])
 
