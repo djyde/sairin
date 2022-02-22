@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { OpenGraph } from './OpenGraph'
 
 export default function Post(props) {
 
@@ -12,7 +13,7 @@ export default function Post(props) {
 
       <Head>
         <title>{props.post.title} - {props.themeConfig.title}</title>
-
+        <OpenGraph post={props.post} />
       </Head>
 
       <div className="container mx-auto mt-24 max-w-2xl px-4 sm:px-0">
