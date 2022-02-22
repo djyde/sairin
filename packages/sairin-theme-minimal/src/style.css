@@ -175,7 +175,7 @@ body {
   font-family: 'IBM Plex Serif', serif;
 }
 
-.post-body p, pre, pre[class*="language-"] {
+.post-body p, pre {
   @apply mb-4 leading-loose;
 }
 

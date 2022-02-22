@@ -6,16 +6,6 @@ import { Feed } from 'feed'
 
 import * as prism from 'prismjs'
 
-marked.setOptions({
-  highlight: (code, lang) => {
-    if (prism.languages[lang]) {
-      return prism.highlight(code, prism.languages[lang], lang);
-    } else {
-      return code;
-    }
-  },
-})
-
 export type SairinConfig = {
   siteConfig: {
     title: string,
@@ -95,8 +85,31 @@ export class Sairin {
 
   private processBody(body: string) {
     const { body: rawBody, attributes } = fm(body);
+    marked.use({
+      renderer: {
+        code(code, lang, escaped) {
+          code = this.options.highlight(code, lang);
+          if (!lang) {
+            return `<pre><code>${code}</code></pre>`;
+          }
+
+          var langClass = "language-" + lang;
+          return `<pre class="${langClass}"><code class="${langClass}">${code}</code></pre>`;
+        }
+      }
+    })
+    const parsed = marked.parse(rawBody, {
+      highlight: (code, lang) => {
+        if (prism.languages[lang]) {
+          return prism.highlight(code, prism.languages[lang], lang);
+        } else {
+          return code;
+        }
+      },
+    })
+    console.log(parsed)
     return {
-      html: marked.parse(rawBody),
+      html: parsed,
       attributes,
     };
   }
