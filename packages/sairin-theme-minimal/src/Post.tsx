@@ -45,7 +45,7 @@ export default function Post(props: PostPageThemeProps) {
               {props.post.reactionGroups.filter(group => group.reactors.totalCount !== 0).map(reactionGroup => {
                 return (
                   <a href={props.post?.url} target="_blank">
-                    <div className='flex gap-2 bg-blue-50 border border-blue-100 px-4 py-1 rounded-full'>
+                    <div className='flex gap-2 bg-blue-50 border border-blue-100 px-4 py-1 rounded-full items-center'>
                       <span className='text-md'>{{
                         'THUMBS_UP': '👍',
                         'THUMBS_DOWN': '👎',
@@ -56,7 +56,7 @@ export default function Post(props: PostPageThemeProps) {
                         'ROCKET': '🚀',
                         'EYES': '👀'
                       }[reactionGroup.content]}</span>
-                      <span className='font-sans'>{reactionGroup.reactors.totalCount}</span>
+                      <span className='text-sm font-sans'>{reactionGroup.reactors.totalCount}</span>
                     </div>
 
                   </a>
