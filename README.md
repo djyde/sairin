@@ -14,7 +14,7 @@ A blog engine based on GitHub issue with the power of Next.js [ISR](https://next
 
 ## Documentation
 
-[Step by step guide](https://blog.sairinjs.com/blog/introducing-sairin)
+[Step by step guide](https://blog.sairinjs.com/introducing-sairin)
 
 ### sairin.config.ts
 
