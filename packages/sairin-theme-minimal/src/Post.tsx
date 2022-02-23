@@ -40,7 +40,30 @@ export default function Post(props: PostPageThemeProps) {
 
           </div>
 
-          <div className='mt-2'>
+          <div className='my-8'>
+            <div className='flex gap-4 flex-wrap'>
+              {props.post.reactionGroups.filter(group => group.reactors.totalCount !== 0).map(reactionGroup => {
+                return (
+                  <a href={props.post?.url} target="_blank">
+                    <div className='flex gap-2 bg-blue-50 border border-blue-100 px-4 py-1 rounded-full'>
+                      <span className='text-md'>{{
+                        'THUMBS_UP': '👍',
+                        'THUMBS_DOWN': '👎',
+                        'LAUGH': '😄',
+                        'HOORAY': '🎉',
+                        'CONFUSED': '😕',
+                        'HEART': '❤️',
+                        'ROCKET': '🚀',
+                        'EYES': '👀'
+                      }[reactionGroup.content]}</span>
+                      <span className='font-sans'>{reactionGroup.reactors.totalCount}</span>
+                    </div>
+
+                  </a>
+                )
+              })}
+
+            </div>
           </div>
         </div>
 
