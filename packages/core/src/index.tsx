@@ -1,10 +1,15 @@
 import axios from "axios";
 import { marked } from "marked";
 import fm from "front-matter";
-import { pick } from 'lodash'
+import { omit, pick } from 'lodash'
 import { Feed } from 'feed'
 
 import * as prism from 'prismjs'
+import { GetPostQueryProps, GetPostsQuery } from "./queries";
+
+export type FrontMatter = {
+  path: string
+}
 
 export type SairinConfig = {
   siteConfig: {
@@ -13,7 +18,7 @@ export type SairinConfig = {
     url?: string,
   },
   theme: any;
-  themeConfig?: Record<string, any>;
+  themeConfig: Record<string, any>;
   allowUsers?: string[]
 };
 
@@ -47,34 +52,32 @@ export class Sairin {
     }
     : ({} as any);
 
+  private async request<T>(query: {
+    query: string,
+    variables: any
+  }) {
+    const res = await axios.post('https://api.github.com/graphql', query, {
+      headers: this.authHeaders
+    })
+    return res.data.data as T
+  }
 
   constructor(public config: SairinConfig) {
   }
 
   async getPostList() {
-    // https://docs.github.com/en/rest/reference/issues#list-repository-issues
-    const res = await axios.get(
-      `https://api.github.com/repos/${this.resolvedConfig.repo}/issues?state=all&per_page=100`,
-      {
-        params: {
-          state: "all",
-          per_page: 100,
-          labels: ["published"].join(","),
-        },
-        headers: {
-          ...this.authHeaders,
-        },
-      }
-    );
 
-    const posts = res.data.filter(post => {
-      return this.allowUsers.indexOf(post.user.login) !== -1
+    const result = await this.request<GetPostQueryProps>(GetPostsQuery({
+      owner: this.resolvedConfig.ghUserName,
+      repo: this.resolvedConfig.repoSlug,
+    }))
+
+    const posts = result.repository.issues.nodes.filter(post => {
+      return this.allowUsers.indexOf(post.author.login) !== -1
     }).map((post) => {
       const { html, attributes } = this.processBody(post.body);
       return {
-        // ...post,
-        ...pick(post, ['id', 'title', 'created_at', 'updated_at', 'html_url', 'body']),
-        user: pick(post.user, ["avatar_url", "name", "html_url", "login"]),
+        ...post,
         html,
         attributes,
       };
@@ -84,7 +87,7 @@ export class Sairin {
   }
 
   private processBody(body: string) {
-    const { body: rawBody, attributes } = fm(body);
+    const { body: rawBody, attributes } = fm<FrontMatter>(body);
     marked.use({
       renderer: {
         code(code, lang, escaped) {
@@ -107,7 +110,6 @@ export class Sairin {
         }
       },
     })
-    console.log(parsed)
     return {
       html: parsed,
       attributes,
@@ -131,24 +133,22 @@ export class Sairin {
   }
 
   getHomePageStaticProps = async () => {
-    const posts = await this.getPostList()
-    const user = await this.getUser(this.resolvedConfig.ghUserName)
+    const posts = (await this.getPostList()).map(post => {
+      return omit(post, ['body', 'html'])
+    })
+    
     return {
       props: {
         // TODO: reduce post body size
         posts,
-        user: {
-          avatarUrl: user.avatar_url,
-          name: user.name
-        },
-        themeConfig: this.config?.themeConfig || {}
+        themeConfig: this.config.themeConfig || {}
       },
       revalidate: this.REVALIDATE
     }
   }
 
   getPostPageStaticProps = async (ctx) => {
-    const posts = await this.getPostList() as any[]
+    const posts = await this.getPostList()
     const post = posts.find(p => p.attributes.path === ctx.params[this.PAGE_PATH_PLACEHOLDER].join('/')) || null
     return {
       props: {
@@ -178,7 +178,7 @@ export class Sairin {
 
     posts.forEach(post => {
       feed.addItem({
-        date: new Date(post.updated_at),
+        date: new Date(post.updatedAt),
         link: `${this.config.siteConfig.url}/${post.attributes.path}`,
         title: post.title,
         content: post.html,
@@ -199,3 +199,7 @@ export class Sairin {
     {this.config?.theme.Head && <this.config.theme.Head sairinConfig={this.config}></this.config.theme.Head>}
   </>
 }
+
+
+export type HomePageThemeProps = Awaited<ReturnType<Sairin['getHomePageStaticProps']>>['props']
+export type PostPageThemeProps = Awaited<ReturnType<Sairin['getPostPageStaticProps']>>['props']

@@ -3,7 +3,9 @@ import Link from "next/link"
 import dayjs from 'dayjs'
 import { Footer } from "./Footer"
 
-export default function Home(props) {
+import { HomePageThemeProps } from '@sairinjs/core'
+
+export default function Home(props: HomePageThemeProps) {
   return (
     <>
       <Head>
@@ -42,7 +44,7 @@ export default function Home(props) {
                 </Link>
 
                 <div className="text-sm">
-                  {dayjs(post.created_at).format('DD/MM/YYYY')}
+                  {dayjs(post.createdAt).format('DD/MM/YYYY')}
                 </div>
               </div>
             )

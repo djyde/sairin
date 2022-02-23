@@ -1,9 +1,10 @@
+import { PostPageThemeProps } from '@sairinjs/core'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Footer } from './Footer'
 import { OpenGraph } from './OpenGraph'
 
-export default function Post(props) {
+export default function Post(props: PostPageThemeProps) {
 
   if (!props.post) {
     return null
@@ -31,11 +32,11 @@ export default function Post(props) {
           </div>
 
           <div className='flex mt-4 items-center gap-2'>
-            <img className='w-8 h-8 rounded-full' src={ props.post.user.avatar_url }></img>
+            <img className='w-8 h-8 rounded-full' src={ props.post.author.avatarUrl }></img>
 
-            <a target='_blank' href={props.post.user.html_url}>{props.post.user.login}</a>
+            <a target='_blank' href={props.post.author.url}>{props.post.author.login}</a>
 
-            <a className='underline text-sm' target='_blank' href={props.post.html_url}>View on GitHub</a>
+            <a className='underline text-sm' target='_blank' href={props.post.url}>View on GitHub</a>
 
           </div>
 
