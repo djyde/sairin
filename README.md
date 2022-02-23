@@ -41,7 +41,7 @@ Sairin support RSS out of the box. You need to set `url` on the `sairin.config.t
 export default {
   siteConfig: {
     title: 'Sairin',
-    url: 'http://your-site.com'
++   url: 'http://your-site.com'
   },
 } as SairinConfig;
 ```
