@@ -1,3 +1,9 @@
+
+<p align="center">
+  <img width="640" src="https://user-images.githubusercontent.com/914329/155258608-6f1ecbdd-d1e0-4ee0-813f-4c02d92c13ec.png" alt="showcase">
+</p>
+
+
 # Sairin
 
 A blog engine based on GitHub issue with the power of Next.js [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
@@ -8,7 +14,7 @@ A blog engine based on GitHub issue with the power of Next.js [ISR](https://next
 
 ## Documentation
 
-[Step by step guide](https://blog.sairinjs.com/blog/introducing-sairin)
+[Step by step guide](https://blog.sairinjs.com/introducing-sairin)
 
 ### sairin.config.ts
 
@@ -35,7 +41,7 @@ Sairin support RSS out of the box. You need to set `url` on the `sairin.config.t
 export default {
   siteConfig: {
     title: 'Sairin',
-    url: 'http://your-site.com'
++   url: 'http://your-site.com'
   },
 } as SairinConfig;
 ```
