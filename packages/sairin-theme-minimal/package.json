@@ -1,6 +1,6 @@
 {
   "name": "@sairinjs/sairin-theme-minimal",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "scripts": {
     "dev": "concurrently npm:dev-theme npm:dev-style",
