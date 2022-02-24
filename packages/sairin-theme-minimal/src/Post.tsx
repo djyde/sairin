@@ -1,4 +1,5 @@
 import { PostPageThemeProps } from '@sairinjs/core'
+import dayjs from 'dayjs'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Footer } from './Footer'
@@ -68,6 +69,40 @@ export default function Post(props: PostPageThemeProps) {
         </div>
 
         <div className="post-body" dangerouslySetInnerHTML={{ __html: props.post.html }}>
+
+        </div>
+
+        <hr className='my-12' />
+
+        <div className="font-sans">
+          {/* <h1 className='text-md mb-8'>🗣 Comments</h1> */}
+
+          <div className='mb-12'>
+            <a target={'_blank'} href={props.post.url} className='font-medium border border-gray-700 hover:bg-gray-700 hover:text-gray-100 transition-all text-gray-700 text-sm rounded px-4 py-2'>Add comment</a>
+          </div>
+
+          {props.post.comments.nodes.map(comment => {
+            return (
+              <div className='mb-8'>
+                <div className='flex items-center gap-2' >
+                  <img className='w-8 h-8 rounded-full' src={comment.author.avatarUrl} alt="" />
+
+                  <span className='font-medium'>{comment.author.login}</span>
+
+                </div>
+
+                <div dangerouslySetInnerHTML={{ __html: (comment as any).html }} className='mt-2 mb-2 text-gray-800 post-body font-sans'>
+                </div>
+
+                <div className='mt-1 flex text-sm text-gray-500 items-center gap-2'>
+                  <a target={'_blank'} href={comment.url} className='hover:underline'>Reply</a>
+                  <span>•</span>
+                  <span className=''>{dayjs(comment.createdAt).format('YYYY-MM-DD')}</span>
+
+                </div>
+              </div>
+            )
+          })}
 
         </div>
 
