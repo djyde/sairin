@@ -65,7 +65,7 @@ export class Sairin {
   constructor(public config: SairinConfig) {
   }
 
-  async getPostList() {
+  getPostList = async () => {
 
     const result = await this.request<GetPostQueryProps>(GetPostsQuery({
       owner: this.resolvedConfig.ghUserName,
@@ -76,6 +76,14 @@ export class Sairin {
       return this.allowUsers.indexOf(post.author.login) !== -1
     }).map((post) => {
       const { html, attributes } = this.processBody(post.body);
+      post.comments.nodes = post.comments.nodes.map(comment => {
+        const { html } = this.processBody(comment.body)
+        return {
+          ...comment,
+          html
+        }
+      })
+
       return {
         ...post,
         html,

@@ -13,6 +13,18 @@ export type GetPostQueryProps = {
         createdAt: string;
         updatedAt: string;
         body: string;
+        comments: {
+          nodes: {
+            url: string,
+            createdAt: string,
+            author: {
+              login: string;
+              url: string;
+              avatarUrl: string;
+            };
+            body: string;
+          }[];
+        };
         reactionGroups: {
           content: string;
           reactors: {
@@ -42,6 +54,18 @@ export const GetPostsQuery = (variables: GetPostQueryVar) => ({
         updatedAt,
         createdAt,
         body,
+        comments (first: 100) {
+          nodes {
+            createdAt,
+            url,
+            author {
+              login,
+              url,
+              avatarUrl,
+            },
+            body
+          }
+        },
         reactionGroups {
           content,
           reactors {
