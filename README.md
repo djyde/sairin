@@ -6,15 +6,48 @@
 
 # Sairin
 
-A blog engine based on GitHub issue with the power of Next.js [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration).
+Generate a blog from GitHub issue.
 
 ## On Clieck Deploy
 
 <a target="_blank" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdjyde%2Fsairin-starter&env=GITHUB_TOKEN&envDescription=GitHub%20personal%20access%20token&envLink=https%3A%2F%2Fgithub.com%2Fsettings%2Ftokens"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
-## Documentation
+## Get started
 
-[Step by step guide](https://blog.sairinjs.com/introducing-sairin)
+1. Clone the [starter template](https://github.com/djyde/sairin-starter)
+
+```bash
+$ git clone https://github.com/djyde/sairin-starter.git your_blog
+
+$ cd your_blog && rm .git
+
+# install dependencies
+
+$ npm i
+```
+
+2. Run the blog
+
+Before running, you need to set these environment variable by creating a `.env`:
+
+- `REPO`: The GitHub repo name. Like `user/repo`
+- `GITHUB_TOKEN`: The [personal access token](https://github.com/settings/tokens)
+
+```bash
+# run the blog
+
+$ npm run dev
+```
+
+3. Export the blog as a static site
+
+```bash
+$ npm run export
+```
+
+The static site will be ouput to `/out`
+
+## Documentation
 
 ### sairin.config.ts
 

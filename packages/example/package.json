@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "export": "npm run build && next export"
   },
   "dependencies": {
     "@sairinjs/core": "workspace:*",
