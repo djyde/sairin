@@ -8,7 +8,7 @@
 
 Generate a blog from GitHub issue.
 
-## On Clieck Deploy
+## One Click Deploy
 
 <a target="_blank" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdjyde%2Fsairin-starter&env=GITHUB_TOKEN&envDescription=GitHub%20personal%20access%20token&envLink=https%3A%2F%2Fgithub.com%2Fsettings%2Ftokens"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
