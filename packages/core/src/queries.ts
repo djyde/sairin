@@ -1,22 +1,28 @@
-
 export type GetPostQueryVar = {
-  owner: string,
-  repo: string
-}
+  owner: string;
+  repo: string;
+};
 export type GetPostQueryProps = {
   repository: {
     issues: {
       nodes: {
         id: string;
         title: string;
+        number: number;
         url: string;
         createdAt: string;
         updatedAt: string;
         body: string;
+        labels: {
+          nodes: {
+            name: string;
+            color: string;
+          }[];
+        };
         comments: {
           nodes: {
-            url: string,
-            createdAt: string,
+            url: string;
+            createdAt: string;
             author: {
               login: string;
               url: string;
@@ -51,9 +57,16 @@ export const GetPostsQuery = (variables: GetPostQueryVar) => ({
         id,
         url,
         title,
+        number,
         updatedAt,
         createdAt,
         body,
+        labels (first: 50) {
+          nodes {
+            name,
+            color
+          }
+        },
         comments (first: 100) {
           nodes {
             createdAt,
