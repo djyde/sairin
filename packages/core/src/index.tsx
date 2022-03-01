@@ -86,19 +86,9 @@ export class Sairin {
 
         return {
           ...post,
-          labels: post.labels.nodes.reduce(
-            (filtered, label) =>
-              label.name === "published"
-                ? filtered
-                : [
-                    ...filtered,
-                    {
-                      ...label,
-                      color: "#" + label.color,
-                    },
-                  ],
-            []
-          ),
+          labels: post.labels.nodes
+            .filter((label) => label.name !== "published")
+            .map((label) => ({ ...label, color: "#" + label.color })),
           html,
           attributes,
         };
