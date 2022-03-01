@@ -88,16 +88,15 @@ export class Sairin {
           ...post,
           labels: post.labels.nodes.reduce(
             (filtered, label) =>
-              label.name.startsWith("tag/")
-                ? [
+              label.name === "published"
+                ? filtered
+                : [
                     ...filtered,
                     {
                       ...label,
-                      name: label.name.slice(4),
                       color: "#" + label.color,
                     },
-                  ]
-                : filtered,
+                  ],
             []
           ),
           html,
