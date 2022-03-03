@@ -8,7 +8,7 @@ export default function PostTags(props: {
       {props.labels.map((label) => {
         return (
           <span
-            className="rounded-full border-solid border px-4"
+            className="rounded-full border-solid border px-4 text-sm"
             style={{
               backgroundColor: label.color,
               color: fontColorContrast(label.color),
