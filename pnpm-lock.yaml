@@ -54,12 +54,14 @@ importers:
       autoprefixer: ^10.4.2
       concurrently: ^7.0.0
       dayjs: ^1.10.7
+      font-color-contrast: ^11.1.0
       next: ^12.1.0
       postcss: ^8.4.6
       tailwindcss: ^3.0.23
       typescript: ^4.5.5
     dependencies:
       dayjs: 1.10.7
+      font-color-contrast: 11.1.0
     devDependencies:
       '@sairinjs/core': link:../core
       autoprefixer: 10.4.2_postcss@8.4.6
@@ -556,6 +558,10 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.3
+    dev: false
+
+  /font-color-contrast/11.1.0:
+    resolution: {integrity: sha512-PxpFaesCSsDwaciw7MF6B2thUkH7skqZlz4BzUnvapR6+Es2877q7ru/tqfsITuaraPz+TGfsOfdtU4D0qjqEw==}
     dev: false
 
   /fraction.js/4.1.3:

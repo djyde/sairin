@@ -24,6 +24,7 @@
     "next": "^12.1.0"
   },
   "dependencies": {
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.10.7",
+    "font-color-contrast": "^11.1.0"
   }
 }
